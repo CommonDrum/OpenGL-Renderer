@@ -21,5 +21,5 @@ public:
 	// Deletes the Shader Program
 	void Delete();
 
-	void SetUniformMat4f(const std::string& name, const glm::mat4& proj);
+	void SetUniformMat4f(const GLchar* name, const glm::mat4& proj);
 };

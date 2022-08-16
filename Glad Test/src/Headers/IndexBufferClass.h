@@ -3,9 +3,13 @@
 
 class IndexBuffer
 {
+private:
+	int m_Size;
+
 public:
 	// ID reference of Elements Buffer Object
 	GLuint ID;
+	
 	// Constructor that generates a Elements Buffer Object and links it to indices
 	IndexBuffer(GLuint* indices, GLsizeiptr size);
 
@@ -15,4 +19,6 @@ public:
 	void Unbind();
 	// Deletes the ElementBuffer
 	void Delete();
+	//Get the size ;)
+	int GetCount();
 };

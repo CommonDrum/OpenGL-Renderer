@@ -64,7 +64,7 @@ void Shader::Delete()
 	glDeleteProgram(ID);
 }
 
-void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& proj)
+void Shader::SetUniformMat4f(const GLchar* name, const glm::mat4& proj)
 {
-	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE,&proj[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &proj[0][0]);
 }
