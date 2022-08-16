@@ -1,11 +1,13 @@
 #include "../Headers/IndexBufferClass.h"
+// I want to gennerate differnet Index buffers depending on what type of object
+// I want to draw
 
 // Constructor that generates a Elements Buffer Object and links it to indices
-IndexBuffer::IndexBuffer(GLuint* indices, GLsizeiptr size)
+IndexBuffer::IndexBuffer(GLsizeiptr size)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
 	m_Size = size;
 }
 

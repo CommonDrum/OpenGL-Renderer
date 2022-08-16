@@ -11,7 +11,7 @@ public:
 	GLuint ID;
 	
 	// Constructor that generates a Elements Buffer Object and links it to indices
-	IndexBuffer(GLuint* indices, GLsizeiptr size);
+	IndexBuffer(GLsizeiptr size);
 
 	// Binds the ElementBuffer
 	void Bind();

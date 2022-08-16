@@ -1,11 +1,11 @@
 #include "../Headers/VertexBufferClass.h"
 
-// Constructor that generates a Vertex Buffer Object and links it to vertices
-VertexBuffer::VertexBuffer(GLfloat* vertices, GLsizeiptr size)
+// Constructor that generates a dynamic Vertex Buffer Object and links it to vertices
+VertexBuffer::VertexBuffer(GLsizeiptr allocate_size)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
-	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, allocate_size, nullptr, GL_DYNAMIC_DRAW);
 }
 
 // Binds the VertexBuffer

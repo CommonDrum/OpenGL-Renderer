@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Classes\AbstractImGui.cpp" />
     <ClCompile Include="src\Classes\Renderer.cpp" />
     <ClCompile Include="src\Classes\IndexBufferClass.cpp" />
     <ClCompile Include="src\Classes\VertexBufferLayoutClass.cpp" />
@@ -174,9 +175,10 @@
     <None Include="src\Shaders\default.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Headers\AbstractImGui.h" />
     <ClInclude Include="src\Headers\Renderer.h" />
     <ClInclude Include="src\Headers\IndexBufferClass.h" />
-    <ClInclude Include="src\Headers\Header.h" />
+    <ClInclude Include="src\Headers\MyOpenGLRenderer.h" />
     <ClInclude Include="src\Headers\Starter.h" />
     <ClInclude Include="src\Headers\ShaderClass.h" />
     <ClInclude Include="src\Headers\VertexBufferClass.h" />
