@@ -25,8 +25,8 @@ Renderer::Renderer(Shader* shader)
 	// All buffers are now dynamic and are managed
 	// by the Renderer class
 	VA = new VertexArray();
-	IB = new IndexBuffer(MAX_INDEX);
-	VB = new VertexBuffer(MAX_VERTEX * sizeof(Vertex));
+	IB = new IndexBuffer(1000);
+	VB = new VertexBuffer(10000 * 4);
 	VA->Bind();
 	
 }
@@ -51,14 +51,14 @@ void Renderer::Clear()
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Renderer::Draw()
+void Renderer::Draw(int count)
 {
 	VA->Bind();
 	IB->Bind();
 	p_Shader->Activate();
 
 	// Draw primitives, number of indices, datatype of indices, index of indices
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
 }
 
 // Data provided from outside of the class

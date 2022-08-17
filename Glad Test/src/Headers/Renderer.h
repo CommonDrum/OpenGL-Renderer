@@ -6,15 +6,6 @@
 #include "glm/glm.hpp"
 
 
-#define MAX_VERTEX 1000
-#define MAX_INDEX  10000
-
-
-struct Vertex
-{
-	glm::vec3 coordinates;
-	glm::vec3 color;
-};
 
 
 class Renderer
@@ -32,7 +23,7 @@ public:
 	
 	// Utilities
 	void Clear();
-	void Draw();
+	void Draw(int count);
 
 	// Data provided from outside of the class
 	void SetVBLayout(const VertexBufferLayout& layout);

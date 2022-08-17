@@ -1,5 +1,5 @@
 #include "Headers/MyOpenGLRenderer.h"
-
+#include "ArraySorting.h"
 
 
 
@@ -30,7 +30,7 @@ int main()
 {
 	// Create matrix to project objects to 2D screen
 	glm::mat4 proj = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, -1.0f, 1.0f);
-	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(50, 0, 0));
+	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
     glm::mat4 MVP = proj * view;
 
 
@@ -40,6 +40,10 @@ int main()
 
 	Shader shader("C:/Users/Karol/source/repos/Glad Test/Glad Test/src/Shaders/default.vert", "C:/Users/Karol/source/repos/Glad Test/Glad Test/src/Shaders/default.frag");
 	
+	ArraySorting sorter(20);
+
+	sorter.CreateVertices();
+	sorter.CreateIndicies();
 
 	
 
@@ -59,38 +63,31 @@ int main()
 
 	renderer.SetVBLayout(layout);
 
+	int* list = (int*)sorter.getIndicies();
 
-	
-
+	for (int i = 0; i < sorter.getIBsize(); i++)
+	{
+		std::cout << list[i] << std::endl;
+	}
 	
 		static int x_cord = 0.0f;
+
+		renderer.SetVertexBuffer( sorter.getVBsize(), sorter.getVertices());
+		renderer.SetIndexBuffer(  sorter.getIBsize(), sorter.getIndicies());
+
 
 	// Main while loop
 	while (!glfwWindowShouldClose(starter.window))
 	{
 		renderer.Clear();
 		GuiInterface.ImGuiNewFrame();
-
-		
 		
 		if (true)
 
 		// 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
 		{
 			ImGui::Begin("Control Panel");                          // Create a window called "Hello, world!" and append into it.
-
-			//ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-			//ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-			//ImGui::Checkbox("Another Window", &show_another_window);
-
 			ImGui::SliderInt("Distance", &x_cord, -100, 100);       // Edit 1 float using a slider from 0.0f to 1.0f
-			//ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-			//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-			//	counter++;
-			//ImGui::SameLine();
-			//ImGui::Text("counter = %d", counter);
-
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 			ImGui::End();
 		}
@@ -98,10 +95,9 @@ int main()
 		view = glm::translate(glm::mat4(1.0f), glm::vec3(x_cord, 0, 0));
 		MVP = proj * view;
 		shader.SetUniformMat4f("u_MVP", MVP);
-		renderer.SetVertexBuffer(sizeof(vertices),vertices);
-		renderer.SetIndexBuffer(sizeof(indices),indices);
 		
-		renderer.Draw();
+
+		renderer.Draw(sorter.getIBsize()*4);
 		GuiInterface.ImGuiRender();
 		
 		// Swap the back buffer with the front buffer

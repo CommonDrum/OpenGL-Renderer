@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ArraySorting.cpp" />
     <ClCompile Include="src\Classes\AbstractImGui.cpp" />
     <ClCompile Include="src\Classes\Renderer.cpp" />
     <ClCompile Include="src\Classes\IndexBufferClass.cpp" />
@@ -175,6 +176,7 @@
     <None Include="src\Shaders\default.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ArraySorting.h" />
     <ClInclude Include="src\Headers\AbstractImGui.h" />
     <ClInclude Include="src\Headers\Renderer.h" />
     <ClInclude Include="src\Headers\IndexBufferClass.h" />
