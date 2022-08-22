@@ -9,7 +9,7 @@ struct Vec3
 
 struct Vertex
 {
-	Vec3 coordinates;
+	Vec3 coordinates = { 0,0,0 };
 	Vec3 colors = { 1.0f,1.0f,1.0f };
 
 };

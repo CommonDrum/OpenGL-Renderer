@@ -15,7 +15,7 @@ ArraySorting::ArraySorting(int count)
 void ArraySorting::CreateVertices()
 {
 	float left_x_cord = p_padding - 100;
-	float width = 10.0f;
+	float width = 1.0f;
 
 	// Can do it faster later
 	for (int i = 0; i < p_count; i++)
@@ -28,10 +28,10 @@ void ArraySorting::CreateVertices()
 		v1.coordinates = { left_x_cord + width	,0				,0};
 		p_vertices.push_back(v1);
 
-		v1.coordinates = { left_x_cord + width	,50		,0};
+		v1.coordinates = { left_x_cord + width	,p_array[i]		,0};
 		p_vertices.push_back(v1);
 
-		v1.coordinates = { left_x_cord			,50		,0};
+		v1.coordinates = { left_x_cord			,p_array[i]		,0};
 		p_vertices.push_back(v1);
 
 		left_x_cord += width;

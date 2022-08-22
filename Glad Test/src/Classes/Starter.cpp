@@ -1,9 +1,9 @@
 #include"../Headers/Starter.h"
+#include <iostream>
 
 
 
-
-Starter::Starter(int sizeX, int sizeY, std::string title)
+Starter::Starter(std::string title, int sizeX , int sizeY)
 {
 	// Initialize GLFW
 	glfwInit();
@@ -25,6 +25,8 @@ Starter::Starter(int sizeX, int sizeY, std::string title)
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	glViewport(0, 0, sizeX, sizeY);
+	// Enable vsync
+	glfwSwapInterval(1); 
 
 }
 
@@ -34,5 +36,25 @@ Starter::~Starter()
 {
 	glfwDestroyWindow(window);
 	glfwTerminate();
+}
+
+
+
+void Starter::window_maximize_callback()
+{
+	maximized = glfwGetWindowAttrib(window, GLFW_MAXIMIZED);
+
+	if (maximized)
+	{
+		int width, height;
+		glfwGetWindowSize(window, &width, &height);
+		glViewport(0, 0, width, height);
+		proj = glm::ortho(0.0f, (float)width, 0.0f, (float)height, -1.0f, 1.0f);
+	}
+	else
+	{
+		glViewport(0, 0, DEFAULT_WIDTH, DEFAULT_HIGHT);
+		proj = glm::ortho(0.0f, DEFAULT_WIDTH, 0.0f, DEFAULT_HIGHT, -1.0f, 1.0f);
+	}
 }
 
