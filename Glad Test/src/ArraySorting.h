@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include <array>
+#include <stdlib.h>
+#include <time.h>
+#include "Headers/VertexBufferLayoutClass.h"
 
 struct Vec3
 {
@@ -29,6 +32,14 @@ static std::array<Vertex,4> GenQuad(float x, float y, float width)
 	return { v1,v2,v3,v4 };
 }
 
+/*
+* ArraySorting class is used to create and manipulate
+* Vertex and Index buffers to visualize sorting of an array.
+* 
+* 
+* 
+*/
+
 class ArraySorting
 {
 public:
@@ -36,20 +47,29 @@ public:
 
 	void CreateVertices();
 	void CreateIndicies();
+	void RandomizeArray(float* arr,int size);
+	void UpdateVertices();
+	void QuadSwap(int index1, int index2);
+
 
 	void* getVertices();
 	void* getIndicies();
 	 int getIBsize();
 	 int getVBsize();
+	 VertexBufferLayout getLayout();
+
 
 
 private:
+	void p_floatSwap(int index1, int index2);
 	std::vector<Vertex> p_vertices;
 	std::vector<int> p_indicies;
 	std::vector<float> p_array;
+	VertexBufferLayout p_layout;
 
-	float p_padding = 10.0f;
+	float p_padding = 100.0f;
 	int p_count;
+	int p_iterator = 0;
 	
 
 

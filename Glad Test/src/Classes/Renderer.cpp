@@ -25,8 +25,8 @@ Renderer::Renderer(Shader* shader)
 	// All buffers are now dynamic and are managed
 	// by the Renderer class
 	VA = new VertexArray();
-	IB = new IndexBuffer(1000);
-	VB = new VertexBuffer(10000 * 4);
+	IB = new IndexBuffer(100000 * 4);
+	VB = new VertexBuffer(100000 * 4);
 	VA->Bind();
 	
 }

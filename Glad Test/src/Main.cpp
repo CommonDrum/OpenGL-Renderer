@@ -19,19 +19,11 @@ int main()
 
 	/* APPLICATION SPECIFIC CODE */
 	// (maybe move some of the initialization stuff here as someone might want to specifi shaders, GUI, etc.)
-	ArraySorting sorter(40);
-	sorter.CreateVertices();
-	sorter.CreateIndicies();
+	ArraySorting sorter(1000);
+	
+	
 
-	// MOVE IT TO ANOTHER FILE
-	// Here layout will be three floats X,Y,Z and another thre for colors R,G,B
-	VertexBufferLayout layout;
-	// Cordinates
-	layout.Push<float>(3);
-	// Color
-	layout.Push<float>(3);
-
-	renderer.SetVBLayout(layout);
+	renderer.SetVBLayout(sorter.getLayout());
 
 	int* list = (int*)sorter.getIndicies();
 
