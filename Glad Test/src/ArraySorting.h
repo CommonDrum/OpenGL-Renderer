@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Headers/VertexBufferLayoutClass.h"
+#include "Headers/Renderer.h"
+#include "GLFW/glfw3.h"
 
 struct Vec3
 {
@@ -43,7 +45,7 @@ static std::array<Vertex,4> GenQuad(float x, float y, float width)
 class ArraySorting
 {
 public:
-	ArraySorting(int count);
+	ArraySorting(int count, GLFWwindow* window);
 
 	void CreateVertices();
 	void CreateIndicies();
@@ -56,7 +58,10 @@ public:
 	void* getIndicies();
 	 int getIBsize();
 	 int getVBsize();
+	 float getQuadHeight(int index);
 	 VertexBufferLayout getLayout();
+
+	 void BubbleSort(Renderer* renderer);
 
 
 
@@ -66,6 +71,7 @@ private:
 	std::vector<int> p_indicies;
 	std::vector<float> p_array;
 	VertexBufferLayout p_layout;
+	GLFWwindow* p_window;
 
 	float p_padding = 100.0f;
 	int p_count;
